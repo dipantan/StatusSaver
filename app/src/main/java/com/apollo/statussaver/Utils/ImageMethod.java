@@ -6,7 +6,7 @@ import java.io.File;
  * Created by Apollo on 4/8/2020.
  */
 
-public class Method1 {
+public class ImageMethod {
     public static void load_Directory_Files(File directory) {
         File[] fileList = directory.listFiles();
         if (fileList != null && fileList.length > 0) {
@@ -15,10 +15,10 @@ public class Method1 {
                     load_Directory_Files(aFileList);
                 } else {
                     String name = aFileList.getName().toLowerCase();
-                    for (String extension : Constant1.musicExtensions) {
+                    for (String extension : ImageConstant.musicExtensions) {
                         //check file extension
                         if (name.endsWith(extension)) {
-                            Constant1.mediaList.add(aFileList);
+                            ImageConstant.mediaList.add(aFileList);
                             //when a found file
                             break;
                         }

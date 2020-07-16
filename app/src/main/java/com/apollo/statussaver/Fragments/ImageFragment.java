@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.apollo.statussaver.ImageAdapter;
+import com.apollo.statussaver.Adapters.ImageAdapter;
 import com.apollo.statussaver.R;
 
 /**

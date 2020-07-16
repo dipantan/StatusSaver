@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "815956025571",
+    "firebase_url": "https://statussaver-ae174.firebaseio.com",
+    "project_id": "statussaver-ae174",
+    "storage_bucket": "statussaver-ae174.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815956025571:android:98acbbb89327b3062f25d6",
+        "android_client_info": {
+          "package_name": "com.apollo.statussaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815956025571-1orka26qg65eilms2edrcvjaq15mdi15.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apollo.statussaver",
+            "certificate_hash": "7f88c7c735c7841a8c790c7948c400641babb00c"
+          }
+        },
+        {
+          "client_id": "815956025571-64uq7iog7d3igcfv9h7jmm518o141da7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apollo.statussaver",
+            "certificate_hash": "9d7d2ec8647a3bdf500f6c8313d7c9db132d7f94"
+          }
+        },
+        {
+          "client_id": "815956025571-8npc79i6ut2u0kfm1039bico9029s160.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT1hwWfEgTVVrW3hYlLUsNBaz_KBOqgm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815956025571-8npc79i6ut2u0kfm1039bico9029s160.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

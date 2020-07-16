@@ -1,6 +1,7 @@
-package com.apollo.statussaver;
+package com.apollo.statussaver.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -12,6 +13,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.apollo.statussaver.Activities.ImageGallery;
+import com.apollo.statussaver.R;
+import com.apollo.statussaver.Utils.ImageConstant;
 import com.bumptech.glide.Glide;
 
 import org.apache.commons.io.FileUtils;
@@ -41,8 +45,8 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
-        //  ((FileLayoutHolder) viewHolder).title.setText(Constant.mediaList.get(i).getName());
-        final Uri uri = Uri.fromFile(Constant.mediaList.get(i));
+        //  ((FileLayoutHolder) viewHolder).title.setText(ImageConstant.mediaList.get(i).getName());
+        final Uri uri = Uri.fromFile(ImageConstant.mediaList.get(i));
         Glide.with(mContext)
                 .load(uri).thumbnail(0.1f).into(((FileLayoutHolder) viewHolder).thumbnail);
 
@@ -51,7 +55,10 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, uri.toString(), Toast.LENGTH_LONG).show();
+                // Toast.makeText(mContext, uri.toString(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(mContext, ImageGallery.class);
+                intent.putExtra("URI", uri.toString());
+                mContext.startActivity(intent);
             }
         });
 
@@ -82,7 +89,7 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return Constant.mediaList.size();
+        return ImageConstant.mediaList.size();
     }
 
     public class FileLayoutHolder extends RecyclerView.ViewHolder {

@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.apollo.statussaver.Adapters.VideoAdapter;
-import com.apollo.statussaver.ImageAdapter;
 import com.apollo.statussaver.R;
 
 public class VideoFragment extends Fragment {

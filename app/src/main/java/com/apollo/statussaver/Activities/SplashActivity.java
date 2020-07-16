@@ -9,9 +9,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.widget.Toast;
 
-import com.apollo.statussaver.Method;
 import com.apollo.statussaver.R;
-import com.apollo.statussaver.Utils.Method1;
 import com.nabinbhandari.android.permissions.PermissionHandler;
 import com.nabinbhandari.android.permissions.Permissions;
 
@@ -29,13 +27,9 @@ public class SplashActivity extends Activity {
         Permissions.check(this, permissions, null, null, new PermissionHandler() {
             @Override
             public void onGranted() {
-                String allPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/WhatsApp/Media/.Statuses";//  "/sdcard/WhatsApp/Media/.Statuses";
+
                 File saveFolder = new File(Environment.getExternalStorageDirectory().getPath() + "/" + "StatusSaver/");
                 saveFolder.mkdir();
-                File storage1 = new File(allPath);
-                File storage2 = new File(allPath);
-                Method.load_Directory_Files(storage1);
-                Method1.load_Directory_Files(storage2);
                 new Handler().postDelayed(new Runnable() {
 
 
@@ -45,7 +39,7 @@ public class SplashActivity extends Activity {
                         startActivity(i);
                         finish();
                     }
-                }, 5000);
+                }, 2000);
             }
             @Override
             public void onDenied(Context context, ArrayList<String> permissionsDenied) {
