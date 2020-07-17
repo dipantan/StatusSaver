@@ -88,17 +88,16 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mainmenu, menu);
-        //   MenuItem item = menu.findItem(R.id.myswitch);
         return true;
     }
 
 
     public void about(MenuItem item) {
-        Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Created by Dipantan", Toast.LENGTH_SHORT).show();
     }
 
     public void update(MenuItem item) {
-        Toast.makeText(this, "Update", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Coming soon", Toast.LENGTH_SHORT).show();
     }
 }
 

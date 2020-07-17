@@ -4,6 +4,8 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.WorkerThread;
 import android.support.v4.app.NotificationCompat;
@@ -24,10 +26,11 @@ public class MessagingService extends FirebaseMessagingService {
 
     public void showNotification(String message) {
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         PendingIntent pi = PendingIntent.getActivity(this, 0, i, 0);
         Notification notification = new NotificationCompat.Builder(this)
-                .setContentTitle("Status Saver")
-                .setSmallIcon(R.drawable.ic_update)
+                .setContentTitle("New Update Available")
+                .setLargeIcon(bitmap)
                 .setContentIntent(pi)
                 .setAutoCancel(true)
                 .build();
