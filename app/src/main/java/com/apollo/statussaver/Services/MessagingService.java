@@ -25,7 +25,7 @@ public class MessagingService extends FirebaseMessagingService {
 
 
     public void showNotification(String message) {
-        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/dipantan/StatusSaver/blob/master/app/release/app-release.apk?raw=true"));
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         PendingIntent pi = PendingIntent.getActivity(this, 0, i, 0);
         Notification notification = new NotificationCompat.Builder(this)
