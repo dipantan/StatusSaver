@@ -24,7 +24,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="35dp"
             android:layout_toEndOf="@id/shareWhatsAppv"
-            android:background="@drawable/ic_update"
+            android:background="@drawable/ic_share"
             android:onClick="share" />
 
         <Button
