@@ -1,12 +1,10 @@
 package com.apollo.statussaver.Activities;
 
 import android.content.Intent;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,23 +36,13 @@ public class ImageGallery extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        Intent intent = new Intent(Intent.ACTION_SEND);
-                        intent.setType("image/*");
-                        intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + f.getAbsolutePath().replace("/file:", "")));
-                        Log.d("URI : ", "file://" + f.getAbsolutePath());
-                        startActivity(Intent.createChooser(intent, "Share image"));
-                    /*    Intent intent;
-                        Uri uri1;
-                        uri1 = FileProvider.getUriForFile(getApplicationContext(), new StringBuffer().append(getApplicationContext().getPackageName()).append(".share").toString(), f);
-                        intent = new Intent("android.intent.action.ATTACH-DATA");
-                        intent.putExtra("mimeType","image/*");
-                        intent.setDataAndType(uri1,"inage/*");
-                        startActivity(intent);
-                        */
-                    } else {
-                        share();
-                    }
+                    StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                    StrictMode.setVmPolicy(builder.build());
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("image/*");
+                    intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + f.getAbsolutePath().replace("/file:", "")));
+                    //       Log.d("URI : ", "file://" + f.getAbsolutePath().replace("/file:", ""));
+                    startActivity(Intent.createChooser(intent, "Share image"));
                 } catch (Exception e) {
                     Toast.makeText(ImageGallery.this, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
@@ -64,46 +52,20 @@ public class ImageGallery extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        //   Toast.makeText(ImageGallery.this, "Coming soon", Toast.LENGTH_SHORT).show();
-                        File file2 = new File(uri);
-                        //        Uri photoUri2 = FileProvider.getUriForFile(ImageGallery.this, getApplicationContext().getPackageName() + ".share", file2);
-                        MediaScannerConnection.scanFile(getApplicationContext(), new String[]{file2.getAbsolutePath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
-                            @Override
-                            public void onScanCompleted(String path, Uri uri) {
-                                Log.d("URI2 ", String.valueOf(uri));
-                                Intent i = new Intent(Intent.ACTION_SEND);
-                                i.setType("image/*");
-                                i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                                i.putExtra(Intent.EXTRA_STREAM, uri);
-                                i.setPackage("com.whatsapp");
-                                startActivity(i);
-                            }
-                        });
+                    StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                    StrictMode.setVmPolicy(builder.build());
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("image/*");
+                    intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + f.getAbsolutePath().replace("/file:", "")));
+                    //  Log.d("URI : ", "file://" + f.getAbsolutePath().replace("/file:", ""));
+                    intent.setPackage("com.whatsapp");
+                    startActivity(intent);
 
-                    } else {
-                        shareWhatsApp();
-                    }
                 } catch (Exception e) {
                     Toast.makeText(ImageGallery.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    //
                 }
             }
         });
-    }
-
-
-    public void share() {
-        Intent i = new Intent(Intent.ACTION_SEND);
-        i.setType("image/*");
-        i.putExtra(Intent.EXTRA_STREAM, Uri.parse(getIntent().getStringExtra("URI")));
-        startActivity(i);
-    }
-
-    public void shareWhatsApp() {
-        Intent i = new Intent(Intent.ACTION_SEND);
-        i.setType("image/*");
-        i.putExtra(Intent.EXTRA_STREAM, Uri.parse(getIntent().getStringExtra("URI")));
-        i.setPackage("com.whatsapp");
-        startActivity(i);
     }
 }
